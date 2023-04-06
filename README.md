@@ -40,3 +40,7 @@ So you can follow these steps to get the realtime data:
 ---
 
 For more information about CORS in combination with flask, feel free to visit: https://flask-cors.readthedocs.io/en/latest/
+
+
+https://user-images.githubusercontent.com/46090335/230403062-7150e7b8-22ac-4f0a-a40d-2d1278c7b90b.mp4
+
