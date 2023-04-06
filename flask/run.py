@@ -8,7 +8,7 @@ api.config['CORS_HEADERS'] = 'Content-Type'
 @api.route('/solar', methods=['GET'])
 @cross_origin()
 def get_solar():
-  website = requests.get(url='yourfroniusip/solar_api/v1/GetPowerFlowRealtimeData.fcgi')
+  website = requests.get(url='http://yourfroniusip/solar_api/v1/GetPowerFlowRealtimeData.fcgi')
   return website.json()
 
 
