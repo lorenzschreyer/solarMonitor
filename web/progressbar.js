@@ -42,7 +42,7 @@ var fetchSolar = window.setInterval(function () {
 
             console.log(production)
             var elem = document.getElementById("greenBar");
-            elem.style.width = production / 100 + "%";
+            elem.style.width = Math.ceil(production / 100) + "%";
 
 
             // Red Bar - Consumption
@@ -54,7 +54,7 @@ var fetchSolar = window.setInterval(function () {
 
             console.log(consumption)
             var elem = document.getElementById("redBar");
-            elem.style.width = consumption / 100 + "%";
+            elem.style.width = Math.ceil(consumption / 100) + "%";
         });
 }, 1000);
 
