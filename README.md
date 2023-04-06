@@ -10,10 +10,20 @@ This repo holds two main components that are neccessary
 1. the web folder in which a simple script builds up the website
 2. a basic flask Api which bypasses the CORS Policy and functions like a proxy
 
+## Features
+
+- Visualize how much power is used and generated in Realtime
+- Responsive Webview optimized for Safari on Mobile
+- Starting Animation
+- Faster reloading the difference of the powers
+- simple and clean look
+
+
 ## Web
 
-The animation is created by [justanotherguy](https://lottiefiles.com/justanotherguy)
-using the lottiejs library
+- The animation is created by [justanotherguy](https://lottiefiles.com/justanotherguy) using the lottiejs library
+- Font is "Poppins" by Google https://fonts.google.com/specimen/Poppins
+- Rest of the Code is written in plain js
 
 With `fetch("http://yourflaskserverip:5000/solar")` the solar information is requested via the flask server proxy
 
