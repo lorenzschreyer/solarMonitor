@@ -13,6 +13,7 @@ This repo holds two main components that are neccessary
 ## Web
 
 The animation is created by [justanotherguy](https://lottiefiles.com/justanotherguy)
+using the lottiejs library
 
 With `fetch("http://yourflaskserverip:5000/solar")` the solar information is requested via the flask server proxy
 
