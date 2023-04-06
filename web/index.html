@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Solar Monitor</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body>
+<div id="container">
+    <h1>Solar Monitor</h1>
+    <div id="animationContainer" style="width:100%; max-width: 500px;"></div>
+    <div id="powerBars">
+        <div id="powerBarLeft">
+            <div id="redBar"></div>
+        </div>
+        <div id="powerBarRight">
+            <div id="greenBar"></div>
+        </div>
+    </div>
+    <div id="currentPower"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch-jsonp/1.0.6/fetch-jsonp.min.js"></script>
+<script src="animation/lottie.js"></script>
+<script src="animation/index.js"></script>
+<script src="progressbar.js"></script>
+</body>
+</html>
+
