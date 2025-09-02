@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./flask
+      dockerfile: Dockerfile
+    container_name: flask-backend
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    environment:
+      - FRONIUS_IP=<Enter your Fronius IP here>
+
+  frontend:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: web-frontend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    depends_on:
+      - backend

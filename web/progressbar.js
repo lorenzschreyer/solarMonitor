@@ -1,3 +1,7 @@
+let currentPower = 0;
+let currentProduction = 0;
+let currentConsumption = 0;
+
 function move() {
     var elem = document.getElementById("greenBar");
     var elem2 = document.getElementById("redBar");
@@ -24,39 +28,58 @@ function move() {
     }, 1000);
 }
 
+function animateValue(start, end, duration, callback) {
+    const startTime = performance.now();
 
-var fetchSolar = window.setInterval(function () {
-    fetch("http://yourflaskserverip:5000/solar")
+    function step(now) {
+        const progress = Math.min((now - startTime) / duration, 1); // 0..1
+        const value = start + (end - start) * progress;
+        callback(value);
+
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        }
+    }
+
+    requestAnimationFrame(step);
+}
+
+
+function fetchSolar() {
+    fetch("http://localhost:5000/solar")
         .then(res => res.json())
         .then(json => {
-
-            power = json.Body.Data.Site.P_Grid
-            power = -1 * power
-            document.getElementById("currentPower").innerHTML = Math.ceil(power) + "&thinsp;W"
+            // Power
+            let newPower = -1 * json.Body.Data.Site.P_Grid;
+            animateValue(currentPower, newPower, 2000, (val) => {
+                document.getElementById("currentPower").innerHTML =
+                    Math.ceil(val) + "&thinsp;W";
+            });
+            currentPower = newPower;
 
             // Green Bar - Production
-            production = json.Body.Data.Site.P_PV
-
-            if (production == null)
-                production = 0
-
-            console.log(production)
-            var elem = document.getElementById("greenBar");
-            elem.style.width = Math.ceil(production / 100) + "%";
-
+            let newProduction = json.Body.Data.Site.P_PV || 0;
+            animateValue(currentProduction, newProduction, 1000, (val) => {
+                let elem = document.getElementById("greenBar");
+                elem.style.width = Math.ceil(val / 100) + "%";
+            });
+            currentProduction = newProduction;
 
             // Red Bar - Consumption
-            consumption = json.Body.Data.Site.P_Load
-            consumption = -1 * consumption
-
-            if (consumption == null)
-                consumption = 0
-
-            console.log(consumption)
-            var elem = document.getElementById("redBar");
-            elem.style.width = Math.ceil(consumption / 100) + "%";
+            let newConsumption = -1 * (json.Body.Data.Site.P_Load || 0);
+            animateValue(currentConsumption, newConsumption, 1000, (val) => {
+                let elem = document.getElementById("redBar");
+                elem.style.width = Math.ceil(val / 100) + "%";
+            });
+            currentConsumption = newConsumption;
+        })
+        .catch(err => {
+            console.error("Error receiving:", err);
+        })
+        .finally(() => {
+            setTimeout(fetchSolar, 2000);
         });
-}, 1000);
+}
 
 
 //
