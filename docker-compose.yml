@@ -8,6 +8,8 @@ services:
     container_name: flask-backend
     ports:
       - "5000:5000"
+    networks:
+      - internal
     restart: unless-stopped
     environment:
       - FRONIUS_IP=<Enter your Fronius IP here>
@@ -19,6 +21,8 @@ services:
     container_name: web-frontend
     ports:
       - "8080:80"
+    networks:
+      - internal
     restart: unless-stopped
     depends_on:
       - backend
