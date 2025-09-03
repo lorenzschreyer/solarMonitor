@@ -27,6 +27,6 @@ services:
     depends_on:
       - backend
 
-  networks:
-    internal_net:
-      driver: bridge
+networks:
+  internal_net:
+    driver: bridge
