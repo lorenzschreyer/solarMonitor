@@ -26,3 +26,7 @@ services:
     restart: unless-stopped
     depends_on:
       - backend
+
+  networks:
+    internal_net:
+      driver: bridge
