@@ -9,7 +9,7 @@ services:
     ports:
       - "5000:5000"
     networks:
-      - internal
+      - internal_net
     restart: unless-stopped
     environment:
       - FRONIUS_IP=<Enter your Fronius IP here>
@@ -22,7 +22,7 @@ services:
     ports:
       - "8080:80"
     networks:
-      - internal
+      - internal_net
     restart: unless-stopped
     depends_on:
       - backend
